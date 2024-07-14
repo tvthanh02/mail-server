@@ -31,7 +31,6 @@ rootRouter.get("/confirm-email", async (req, res) => {
   const { code, d } = req.query;
   const now = Date.now();
   if (now - d >= 60000) {
-    await handleConfirmEmail(code);
     res.sendFile(__dirname + "/expires-time.html");
   } else {
     await handleConfirmEmail(code);
